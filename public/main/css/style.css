@@ -99,18 +99,7 @@ body {
     transform: translate(-50%);
     display: block;
 }
-/* .users{
-   width:75%;
-   position: absolute;
-   left:20%;
-   display:inline-block;
-   background-color:#D2DADF;
-   border:1px solid #397A94;
-   height:100%;
-   top:2%;
-  
 
-} */
 .users__title {
     display: flex;
     text-transform: uppercase;
