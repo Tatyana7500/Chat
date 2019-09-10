@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <script src ="/public/login/src/controllerLogin.js" defer></script>
-    <script src="/public/login/src/viewLogin.js" defer></script>
 </head>
 
 <body>
@@ -20,18 +18,19 @@
 
         <form action="" class="login-form">
 
-            <label for="loginPage-EmailInput" class="login-form__label" name="Email">Your e-mail</label>
-            <input type="text" class="login-form__input" maxlength="16" placeholder="E-mail" id="loginPage-EmailInput">
+            <label for="loginPageEmailInput" class="login-form__label" name="Email">Your e-mail</label>
+            <input type="text" class="login-form__input" maxlength="16" placeholder="E-mail" id="loginPageEmailInput">
 
-            <label for="loginPage-PasswordInput" class="login-form__label" name="password">Your Password</label>
-            <input type="password" class="login-form__input" maxlength="16" placeholder="Password"
-                id="loginPage-PasswordInput">
+            <label for="loginPagePasswordInput" class="login-form__label" name="password">Your Password</label>
+            <input type="password" class="login-form__input" maxlength="16" placeholder="Password" id="loginPagePasswordInput">
 
             <input type="submit" value="login" class="btn login-form__btn" id="enterAccount">
 
         </form>
 
     </div>
+    <script src="/public/login/src/controllerLogin.js"></script>
+    <script src="/public/login/src/viewLogin.js"></script>
 </body>
 
 </html>
