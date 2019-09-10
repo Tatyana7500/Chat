@@ -1,11 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Main</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
+
 <body>
 
+    <div class="main">
+
+        <div class="header">
+            <div class="wrapper header__wrapper">
+                <div class="info">
+                    <p class="info__name">Name:</p>
+                    <p class="info__email">E-mail:</p>
+                </div>
+
+                <a href="#" class="btn logout" id="logOut">log out</a>
+            </div>
+        </div>
+
+        <div class="mainWindow">
+
+            <div class="wrapper mainWindow__wrapper">
+                <div class="buttons">
+                    <button class="btn buttons__btn buttons__btn_user" id="getUsers">users</button>
+                    <button class="btn buttons__btn buttons__btn_chat" id="getChat">chat</button>
+                </div>
+
+                <div class="content"></div>
+
+                <script src="/public/main/src/modelMain.js"></script>
+                <script src="/public/main/src/controllerMain.js"></script>
+                <script src="/public/main/src/viewMain.js"></script>
+                <script src="/public/main/src/message.js"></script>
 </body>
+
 </html>

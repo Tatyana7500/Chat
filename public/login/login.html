@@ -1,11 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
+
 <body>
 
+    <div class="login-wrapper">
+
+        <div class="buttons">
+            <a href="#" class="btn buttons__btn buttons__btn_active" id="loginBtn">login</a>
+            <a href="#" class="btn buttons__btn buttons__btn" id="singInBtn">sing in</a>
+        </div>
+
+        <form action="" class="login-form">
+
+            <label for="loginPageEmailInput" class="login-form__label" name="Email">Your e-mail</label>
+            <input type="text" class="login-form__input" maxlength="16" placeholder="E-mail" id="loginPageEmailInput">
+
+            <label for="loginPagePasswordInput" class="login-form__label" name="password">Your Password</label>
+            <input type="password" class="login-form__input" maxlength="16" placeholder="Password" id="loginPagePasswordInput">
+
+            <input type="submit" value="login" class="btn login-form__btn" id="enterAccount">
+
+        </form>
+
+    </div>
+    <script src="/public/login/src/controllerLogin.js"></script>
+    <script src="/public/login/src/viewLogin.js"></script>
 </body>
+
 </html>
