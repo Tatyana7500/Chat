@@ -1,11 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Sign in</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <script src="/public/signin/src/modelSignin.js" defer></script>
+    <script src="/public/signin/src/controllerSignin.js" defer></script>
+    <script src="/public/signin/src/users.js" defer></script>
+    <script src="/public/signin/src/viewSignin.js" defer></script>
+
 </head>
+
 <body>
 
+    <div class="singin-wrapper">
+
+        <div class="buttons">
+            <a href="#" class="btn buttons__btn" id="singin_loginBtn">login</a>
+            <a href="#" class="btn buttons__btn buttons__btn  buttons__btn_active" id="singin_singInBtn">sing in</a>
+        </div>
+
+        <form action="" class="singin-form">
+
+            <label for="singinPage-EmailInput" class="singin-form__label" name="Email">Your e-mail</label>
+            <input type="text" class="singin-form__input" maxlength="16" placeholder="E-mail"
+                id="singinPage-EmailInput">
+
+            <label for="singinPage-nameInput" class="singin-form__label" name="name">Your name</label>
+            <input type="text" class="singin-form__input" maxlength="16" placeholder="Name" id="singinPage-nameInput">
+
+            <label for="singinPage-PasswordInput" class="singin-form__label" name="password">Your Password</label>
+            <input type="password" class="singin-form__input" maxlength="16" placeholder="Password"
+                id="singinPage-PasswordInput">
+
+            <label for="singinPage-ComfirmPasswordInput" class="singin-form__label" name="password">Comfirm your
+                Password</label>
+            <input type="password" class="singin-form__input" maxlength="16" placeholder="ComfirmPassword"
+                id="singinPage-PasswordInput">
+
+            <input type="submit" value="sing in" class="btn singin-form__btn" id="regAccount">
+
+        </form>
+
+    </div>
+
 </body>
+
 </html>
