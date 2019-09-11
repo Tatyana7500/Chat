@@ -1,8 +1,8 @@
-const messages = {
-    id: 0,
-    idUsers: 0,
-    message: "",
-    date: "",
-    sender: 0,
-    receive: 0
+const messages = function (name, email, message, date, sender, receive) {
+    this.name = name;
+    this.email = email;
+    this.message = message;
+    this.date = date;
+    this.sender = sender;
+    this.receive = receive;
 };
