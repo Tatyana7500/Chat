@@ -1,23 +1,25 @@
-const express = require('express');
 const socket = require('socket.io');
+const express = require('express');
+const constants = require('./constants');
+
 const app = express();
-const server = app.listen(3000);
 app.use(express.static('public'));
+
+const server = app.listen(3000);
 const io = socket(server);
 
-io.sockets.on('connection', onConnection);
+io.sockets.on('connection', handleConnection);
 
-function onConnection(socket) {
-    socket.on('chat message', newMessage);
-    socket.on('disconnect', disconnected);
-
+function handleConnection(socket) {
+    socket.on(constants.MESSAGE, handleMessage);
 }
 
-function disconnected() {
-}
-
-function newMessage(msg) {
-    if (msg.type === "newMessage") {
-        io.sockets.emit('chat message', msg);
+function handleMessage(message) {
+    switch (message.type) {
+        case constants.MESSAGE:
+            io.sockets.emit(constants.MESSAGE, message);
+            break;
+        default:
+            console.log('unknown message type');
     }
 }
