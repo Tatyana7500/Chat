@@ -1,9 +1,17 @@
 const Messages = function () {
-    this._message = [];
+    let message = [];
+    const xhr = new XMLHttpRequest();
+
+    this.getUsers = function (callback) {
+    
+    };
+
+    this.addMessages = (message) => {
+
+    };
 
     this.getMessages = () => {
-    };
-
-    this.addMessages = () => {
+        
     };
 };
+
