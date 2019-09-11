@@ -1,4 +1,7 @@
 module.exports = {
     MESSAGE:'message',
-    CONNECTION:'connection'
+    CONNECTION:'connection',
+    BODYPARSER:'body-parser',
+    MONGOOSE:'mongoose',
+
 };
