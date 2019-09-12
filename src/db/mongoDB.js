@@ -1,20 +1,23 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+
 const messagesSchema = new Schema({
-    id: Number,
-    content: String,
-    sender: Number,
-    receiver: Number,
-    date: Number
+        _id: mongoose.Types.ObjectId,
+        content: String,
+        sender: Number,
+        receiver: Number,
+        date: Number
 });
 
-const userSchema = new Schema({
-    id: Number,
-    name: String,
-    email: String,
-    password: String
+const userScshema = new Schema({
+        _id: mongoose.Types.ObjectId,
+        name: String,
+        email: String,
+        password: String
 });
+
+module.exports = mongoose.model('Product', );
 
 mongoose.connect("mongodb+srv://Kostya:Q1W2E3R4T5@cluster0-9w5kl.mongodb.net/test?retryWrites=true&w=majority",
     {useNewUrlParser: true}, (err) => {
