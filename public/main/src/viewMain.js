@@ -22,7 +22,7 @@ const MainView = function () {
     };
 
     this.chatInit = () => {
-        const drawChat = `<div class="massageField"></div><div class="footer"><textarea class="textMassage" placeholder="Your massage"></textarea><button class="btn footer__send">Send</button></div>`;
+        const drawChat = `<div class="massageField"></div><div class="footer"><textarea class="textMassage" placeholder="Your massage"></textarea><button id="footer__send" class="btn footer__send">Send</button></div>`;
 
         this.content.innerHTML = drawChat;
         this.sendMessage = document.getElementsByClassName("footer__send")[0];

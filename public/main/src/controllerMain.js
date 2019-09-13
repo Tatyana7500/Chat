@@ -8,18 +8,7 @@ const MainController = function (model, view) {
 
     _view.chat.addEventListener('click', event => {
         _model.getMessages(_view.drawInitMassage);
-
-        // setTimeout( () =>
-        // _view.sendMessage.addEventListener('click', event => {
-        //     const message = getAuthData();
-        //   _model.addMessages(message, _view.drawInitMassage);
-        // }), 1000);
     });
-
-    function sendMessage() {
-        const message = getAuthData();
-        _model.addMessages(message);
-    }
 
     _view.logOut.addEventListener('click', event => {
         localStorage.removeItem('chat');
@@ -37,7 +26,7 @@ const MainController = function (model, view) {
         }
     };
 
-    function getAuthData() {
+    function getMessageData() {
         return new Messages(_view.accountName.innerHTML, _view.accountEmail.innerHTML, _view.inputMessage.value, new Date().toISOString().split('T')[0]);
     }
 
@@ -45,11 +34,12 @@ const MainController = function (model, view) {
 
     function addListener (event) {
         if (event.target.className === 'btn footer__send') {
-            const message = getAuthData();
-            _model.addMessages(message, _view.drawInitMassage);
-            _view.content.removeEventListener('click',  addListener);
-        }
+            const message = getMessageData();
+            _model.addMessages(message);
 
-        _view.content.addEventListener('click',  addListener);
+            setTimeout(() => {
+                _view.drawInitMassage(_model._messages);
+            }, 50);
+        }
     }
 };

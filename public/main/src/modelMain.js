@@ -11,16 +11,6 @@ const MainModel = function () {
         });
     };
 
-    this.addMessages = (message, onGetSuccess) => {
-        this.socket.emit('message', message);
-        this.socket.on('message', this.func = (message) => {
-            this._messages.push(message);
-            onGetSuccess(this._messages);
-        });
-    };
-
-
-
     this.getMessages = (onGetMessagesSuccess) => {
         sendGETRequest('/messages', data => {
             this._messages = JSON.parse(data);
@@ -42,6 +32,13 @@ const MainModel = function () {
         xhr.send();
     }
 
+    this.addMessages = (message) => {
+        this.socket.emit('message', message);
+    };
+
     this.socket = io.connect('http://localhost:3001/');
     this.socket.on('connect', function () { console.log("socket connected"); });
+    this.socket.on('message', this.func = (message) => {
+        this._messages.push(message);
+    });
 };

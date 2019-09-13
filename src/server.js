@@ -1,7 +1,9 @@
 const socket = require('socket.io');
+const mongoose = require("mongoose");
 const express = require('express');
 const bodyParser = require("body-parser");
 const constants = require('./constants');
+const Schema = mongoose.Schema;
 const jsonParser = bodyParser.json();
 
 const app = express();
@@ -14,6 +16,22 @@ app.use(express.json());
 
 const server = app.listen(3001);
 const io = socket(server);
+
+const userScheme = new Schema({
+    name: String,
+    email: String,
+    password: String,
+});
+
+const messageScheme = new Schema({
+    message: String,
+    sender: Number,
+    receiver: Number,
+    date: Date,
+});
+
+const UserDB = mongoose.model("User", userScheme);
+const Message = mongoose.model("Message", messageScheme);
 
 io.sockets.on('connection', handleConnection);
 
@@ -56,7 +74,6 @@ const DB = {
     }
 };
 
-
 app.post('/auth', jsonParser, function(request, res) {
     if (!request.body.email || !request.body.password) {
         res.status(401).send('Please pass email and password.')
@@ -72,15 +89,38 @@ app.post('/auth', jsonParser, function(request, res) {
 });
 
 app.post('/signin', jsonParser, function(request, res) {
-    let found = DB.findByEmail(request.body.email);
-    if (found.email === request.body.email) {
-        res.status(403).send("User already exists");
-    } else if (!request.body.email || !request.body.name || !request.body.password) {
-        res.status(401).send("Please fill all fields.");
-    } else {
-        res.status(201).send( "User added");
-        users.push(request.body);
-    }
+
+    const userBlogs = function(email, next) {
+        User.find({email: email}, function(err, users) {
+            if (err) {
+                return;
+            } else {
+                next(users);
+            }
+        });
+    };
+
+    userBlogs(request.body.email, function(err, users) {
+        if (!users) {
+            res.status(201).send("User added");
+                    const user = new UserDB({
+                        name: request.body.name,
+                        email: request.body.email,
+                        password: request.body.password
+                    });
+
+                    user.save()
+                        .then(function (doc) {
+                            console.log("Сохранен объект", doc);
+                        })
+                        .catch(function (err) {
+                            console.log(err);
+                        });
+                    console.log(user);
+        } else {
+            res.status(403).send("User already exists");
+        }
+    });
 });
 
 
@@ -90,4 +130,12 @@ app.get('/users', function(request, res) {
 
 app.get('/messages', function(request, res) {
     res.status(200).send(messages);
+});
+
+mongoose.connect('mongodb://localhost/27017', { useNewUrlParser: true, useUnifiedTopology: true});
+let db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {
+    console.log( `we're connected!`);
 });

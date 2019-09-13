@@ -3,7 +3,6 @@ const LoginController = function (view) {
 
     _view.auth.addEventListener(`click`, () => {
         const data = getAuthData();
-        console.log(data);
         sendPostRequest('/auth', data, _view.handleAuthSuccess, _view.handleAuthError);
     });
 
